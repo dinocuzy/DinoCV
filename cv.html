@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lê Quang Đạt (Dino) · Curriculum Vitae / Resume · Frontend Developer</title>
+  <meta name="description"
+    content="Bản CV chuyên nghiệp của Lê Quang Đạt (Dino) — Frontend Developer, Thực tập sinh FPT Software (Next.js, React, TypeScript, MUI), SV năm 4 ĐH FPT Đà Nẵng.">
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      /* Light Theme (Default for ATS & PDF) */
+      --bg-page: #0f1117;
+      --paper-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --text-dim: #6b7280;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --border-dark: #1f2937;
+      --card-bg: #f8fafc;
+      --tag-bg: #f1f5f9;
+      --tag-text: #334155;
+      --active-dot: #10b981;
+    }
+
+    body.dark-theme {
+      --paper-bg: #12141a;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --primary: #38bdf8;
+      --primary-dark: #0ea5e9;
+      --border: rgba(255, 255, 255, 0.1);
+      --card-bg: #1a1d26;
+      --tag-bg: rgba(255, 255, 255, 0.06);
+      --tag-text: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 30px 16px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ACTION BAR (Screen Only) */
+    .cv-action-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #1e222d;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 8px 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .action-left,
+    .action-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 7px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .btn-action.primary {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    .btn-action.primary:hover {
+      background: #e2e8f0;
+    }
+
+    /* A4 RESUME PAPER CANVAS */
+    .resume-sheet {
+      width: 100%;
+      max-width: 900px;
+      background: var(--paper-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      padding: 44px 48px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+
+    /* HEADER BLOCK */
+    .header-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .candidate-info {
+      flex: 1;
+    }
+
+    .candidate-name {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .candidate-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .status-badge-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--tag-bg);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      margin-bottom: 14px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--active-dot);
+      box-shadow: 0 0 8px var(--active-dot);
+    }
+
+    /* CONTACT GRID */
+    .contact-pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .contact-pill-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .contact-pill-item:hover {
+      color: var(--primary);
+    }
+
+    .contact-pill-item svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+
+    .avatar-wrapper {
+      width: 95px;
+      height: 95px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid var(--border);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      flex-shrink: 0;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* 2-COLUMN MAIN BODY */
+    .resume-body-grid {
+      display: grid;
+      grid-template-columns: 2.1fr 1fr;
+      gap: 32px;
+      margin-top: 26px;
+    }
+
+    @media (max-width: 768px) {
+      .resume-body-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .header-layout {
+        flex-direction: column-reverse;
+      }
+    }
+
+    /* SECTION STYLES */
+    .cv-section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    /* CAREER SUMMARY STATEMENT */
+    .summary-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .summary-text strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* EXPERIENCE & PROJECTS ENTRIES */
+    .experience-card {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .exp-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .exp-date {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    .exp-company {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .exp-company a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .exp-bullets {
+      list-style-type: disc;
+      padding-left: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .exp-bullets li {
+      margin-bottom: 4px;
+    }
+
+    .exp-bullets li strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .tag-badge {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 10px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* RIGHT SIDEBAR ITEMS */
+    .sidebar-block {
+      margin-bottom: 22px;
+    }
+
+    .edu-degree {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .edu-school {
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    .edu-meta {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* SKILLS GROUP */
+    .skill-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-main);
+      text-transform: uppercase;
+      margin: 10px 0 5px;
+      letter-spacing: 0.04em;
+    }
+
+    .skill-group-items {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* SERVICES OFFERED */
+    .service-mini-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+
+    .service-mini-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .service-mini-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* PRINT SPECIFIC STYLES FOR FLAWLESS A4 PDF */
+    @page {
+      size: A4 portrait;
+      margin: 8mm 10mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+      }
+
+      .cv-action-bar {
+        display: none !important;
+      }
+
+      .resume-sheet {
+        border: none !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        background: #ffffff !important;
+      }
+
+      * {
+        color: #000000 !important;
+      }
+
+      .candidate-name {
+        color: #000000 !important;
+      }
+
+      .candidate-title,
+      .exp-company,
+      .edu-school {
+        color: #0284c7 !important;
+      }
+
+      .tag-badge {
+        background: #f1f5f9 !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+      }
+
+      .service-mini-card {
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+
+      a {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP ACTION BAR (SCREEN ONLY) -->
+  <header class="cv-action-bar">
+    <div class="action-left">
+      <a href="index.html" class="btn-action">
+        ← <span id="btnBackText">Quay lại Portfolio</span>
+      </a>
+      <button class="btn-action" onclick="toggleLanguage()" title="Chuyển ngôn ngữ CV">
+        🌐 <span id="btnLangText">English CV</span>
+      </button>
+    </div>
+    <div class="action-right">
+      <button class="btn-action" onclick="toggleTheme()" title="Đổi giao diện">
+        🌓 <span id="btnThemeText">Giao diện</span>
+      </button>
+      <button class="btn-action primary" onclick="window.print()" title="In hoặc lưu file PDF A4">
+        ⎙ <span id="btnPrintText">In / Tải PDF (A4)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- RESUME SHEET (A4 STANDARDIZED) -->
+  <main class="resume-sheet">
+
+    <!-- HEADER BLOCK -->
+    <header class="header-layout">
+      <div class="candidate-info">
+        <h1 class="candidate-name" id="cvName">Lê Quang Đạt (Dino)</h1>
+        <div class="candidate-title" id="cvRole">Frontend Developer · Web Development & Digital Solutions</div>
+
+        <div class="status-badge-inline">
+          <span class="status-dot"></span>
+          <span id="cvStatus">Sẵn sàng nhận dự án Freelance & Remote Jobs</span>
+        </div>
+
+        <div class="contact-pills-grid">
+          <a href="tel:0833347220" class="contact-pill-item">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+            0833 347 220
+          </a>
+          <a href="mailto:datlqde181031@fpt.edu.vn" class="contact-pill-item">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            datlqde181031@fpt.edu.vn
+          </a>
+          <a href="https://github.com/dinocuzy" target="_blank" rel="noopener" class="contact-pill-item">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            github.com/dinocuzy
+          </a>
+          <a href="https://www.facebook.com/dinocuzy" target="_blank" rel="noopener" class="contact-pill-item">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            facebook.com/dinocuzy
+          </a>
+          <a href="https://www.tiktok.com/@dinocuzy2004" target="_blank" rel="noopener" class="contact-pill-item">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.97v7.54c0 2.2-.67 4.38-1.99 6.13-1.35 1.77-3.32 2.97-5.5 3.32-2.14.33-4.42-.06-6.3-1.1-1.88-1.04-3.32-2.73-4.04-4.74-.71-2.02-.63-4.3.24-6.26.87-1.95 2.45-3.5 4.41-4.32 1.73-.72 3.69-.84 5.52-.39v4.22c-1.17-.4-2.52-.31-3.61.27-.99.53-1.72 1.48-1.98 2.58-.26 1.09-.03 2.29.62 3.19.65.91 1.68 1.48 2.79 1.56 1.2.08 2.44-.33 3.28-1.2.82-.87 1.25-2.08 1.2-3.29V.02z"/></svg>
+            @dinocuzy2004 (Daily Vlog)
+          </a>
+        </div>
+      </div>
+
+      <div class="avatar-wrapper">
+        <img src="profile.jpg" alt="Lê Quang Đạt (Dino)" class="avatar-img">
+      </div>
+    </header>
+
+    <!-- 2-COLUMN MAIN CONTENT -->
+    <div class="resume-body-grid">
+
+      <!-- LEFT MAIN COLUMN -->
+      <div class="main-column">
+
+        <!-- SECTION: CAREER SUMMARY -->
+        <section class="cv-section">
+          <h2 class="section-title" id="secSummaryTitle">Mục tiêu nghề nghiệp & Tóm tắt năng lực</h2>
+          <p class="summary-text" id="secSummaryContent">
+            Sinh viên năm 4 chuyên ngành <strong>Kỹ thuật Phần mềm (Software Engineering)</strong> tại <strong>Đại học FPT Đà Nẵng</strong> (GPA 3.2/4.0).
+            Từng hoàn thành kỳ <strong>thực tập Frontend Developer 3 tháng tại FPT Software (F-Soft)</strong> chuyên sâu về <strong>Next.js, ReactJS, TypeScript, Material-UI (MUI)</strong> và <strong>tích hợp RESTful API</strong>.
+            Đạt giải <strong>Top 21 Cuộc thi Thiết kế Web Sáng tạo 2026</strong>.
+            Định hướng nhận các hợp đồng Freelance, Remote Jobs và phát triển các sản phẩm web chuẩn chỉ, hiệu năng cao và đáp ứng thiết kế pixel-perfect.
+          </p>
+        </section>
+
+        <!-- SECTION: WORK EXPERIENCE -->
+        <section class="cv-section">
+          <h2 class="section-title" id="secExpTitle">Kinh nghiệm làm việc & Thực tập</h2>
+
+          <!-- FPT Software Internship -->
+          <div class="experience-card">
+            <div class="exp-header">
+              <div class="exp-title" id="fsoftRole">Thực tập sinh Frontend Developer (Frontend Developer Intern)</div>
+              <div class="exp-date">3 tháng thực tập</div>
+            </div>
+            <div class="exp-company">
+              <span>FPT Software (F-Soft)</span> · <em>Đà Nẵng, Việt Nam</em>
+            </div>
+            <ul class="exp-bullets" id="fsoftBullets">
+              <li>Trực tiếp phát triển và tối ưu giao diện web ứng dụng <strong>Next.js, ReactJS và TypeScript</strong> theo chuẩn doanh nghiệp.</li>
+              <li>Thực hiện <strong>tích hợp RESTful API</strong>, xử lý luồng dữ liệu bất đồng bộ, render dữ liệu động và quản lý trạng thái component mượt mà.</li>
+              <li>Xây dựng và chuẩn hóa các component giao diện người dùng sử dụng thư viện <strong>Material-UI (MUI)</strong>, đảm bảo responsive 100% trên mọi thiết bị.</li>
+              <li>Phối hợp cùng đội ngũ kỹ sư phần mềm theo quy trình phát triển <strong>Agile/Scrum</strong>, quản lý mã nguồn bằng Git/GitHub.</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag-badge">Next.js</span>
+              <span class="tag-badge">ReactJS</span>
+              <span class="tag-badge">TypeScript</span>
+              <span class="tag-badge">Material-UI (MUI)</span>
+              <span class="tag-badge">RESTful API</span>
+              <span class="tag-badge">Git</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION: KEY REAL PROJECTS -->
+        <section class="cv-section">
+          <h2 class="section-title" id="secProjectsTitle">Dự án thực tế nổi bật</h2>
+
+          <!-- Project 1: Home Service Booking -->
+          <div class="experience-card">
+            <div class="exp-header">
+              <div class="exp-title">Home Service Booking — Nền Tảng Đặt Lịch Dịch Vụ Gia Đình</div>
+              <div class="exp-date">2026 · Đang phát triển</div>
+            </div>
+            <div class="exp-company">
+              <a href="https://github.com/ErosFortuna/SDN302-Team5-Home_Service_Booking" target="_blank" rel="noopener">
+                GitHub: ErosFortuna/SDN302-Team5-Home_Service_Booking ↗
+              </a>
+            </div>
+            <ul class="exp-bullets" id="sdnBullets">
+              <li>Đồ án môn học <strong>SDN302 (Team 5)</strong> xây dựng nền tảng kết nối khách hàng với thợ sửa chữa dịch vụ gia đình.</li>
+              <li>Phụ trách xây dựng giao diện người dùng bằng <strong>TypeScript & React</strong>, hoàn thiện luồng tìm kiếm, đặt lịch hẹn và đánh giá đối tác.</li>
+              <li>Tích hợp API quản lý đơn dịch vụ, phân quyền đa vai trò (Khách hàng, Thợ kỹ thuật, Quản trị viên).</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag-badge">TypeScript</span>
+              <span class="tag-badge">ReactJS</span>
+              <span class="tag-badge">Booking Flow</span>
+              <span class="tag-badge">REST API</span>
+            </div>
+          </div>
+
+          <!-- Project 2: ClickEat -->
+          <div class="experience-card">
+            <div class="exp-header">
+              <div class="exp-title">ClickEat — Nền Tảng Đặt Món Ăn Trực Tuyến</div>
+              <div class="exp-date">01/2026 - 04/2026</div>
+            </div>
+            <div class="exp-company">
+              <a href="https://github.com/hung2101-fushiguro/ClickEat" target="_blank" rel="noopener">
+                GitHub: hung2101-fushiguro/ClickEat ↗
+              </a>
+            </div>
+            <ul class="exp-bullets" id="clickEatBullets">
+              <li>Xây dựng ứng dụng đặt món trực tuyến theo kiến trúc <strong>MVC</strong> với giao diện người dùng ReactJS.</li>
+              <li>Thiết kế hệ thống giỏ hàng tính tiền thời gian thực, bộ lọc món theo danh mục và dashboard quản trị merchant.</li>
+              <li>Tối ưu hóa thời gian tải trang, responsive trên thiết bị di động và máy tính bảng.</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag-badge">ReactJS</span>
+              <span class="tag-badge">MVC Architecture</span>
+              <span class="tag-badge">Merchant UI</span>
+              <span class="tag-badge">TailwindCSS</span>
+            </div>
+          </div>
+
+          <!-- Project 3: SmartShop -->
+          <div class="experience-card">
+            <div class="exp-header">
+              <div class="exp-title">SmartShop — Website Thương Mại Điện Tử</div>
+              <div class="exp-date">09/2025 - 11/2025</div>
+            </div>
+            <div class="exp-company">
+              <a href="https://github.com/dinocuzy/SmartShop_Team6" target="_blank" rel="noopener">
+                GitHub: dinocuzy/SmartShop_Team6 ↗
+              </a>
+            </div>
+            <ul class="exp-bullets" id="smartShopBullets">
+              <li>Đồ án Java Web xây dựng website bán hàng trực tuyến với <strong>JSP/Servlet</strong> và cơ sở dữ liệu <strong>MySQL</strong>.</li>
+              <li>Hiện thực hóa luồng mua hàng trọn vẹn: xem chi tiết sản phẩm, giỏ hàng, đặt hàng và phân quyền tài khoản quản trị.</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag-badge">Java Web (JSP/Servlet)</span>
+              <span class="tag-badge">MySQL</span>
+              <span class="tag-badge">MVC</span>
+              <span class="tag-badge">E-Commerce</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT SIDEBAR COLUMN -->
+      <aside class="sidebar-column">
+
+        <!-- EDUCATION -->
+        <section class="sidebar-block">
+          <h2 class="section-title" id="secEduTitle">Học vấn</h2>
+          <div class="edu-degree">Kỹ thuật Phần mềm (Software Engineering)</div>
+          <div class="edu-school">Đại học FPT Đà Nẵng</div>
+          <div class="edu-meta" id="eduMetaText">2022 - 2026 · Sinh viên năm 4</div>
+          <div class="edu-meta" style="font-weight: 600; color: var(--text-main); margin-top: 2px;">GPA: 3.2 / 4.0 · MSSV: DE181031</div>
+        </section>
+
+        <!-- SKILLS MATRIX -->
+        <section class="sidebar-block">
+          <h2 class="section-title" id="secSkillsTitle">Kỹ năng chuyên môn</h2>
+
+          <div class="skill-group-title">Frontend Core</div>
+          <div class="skill-group-items">
+            Next.js, ReactJS, TypeScript, JavaScript (ES6+), HTML5, CSS3, Responsive Design
+          </div>
+
+          <div class="skill-group-title">UI Libraries & Styling</div>
+          <div class="skill-group-items">
+            Material-UI (MUI), TailwindCSS, Bootstrap, Figma to Code, Micro-interactions
+          </div>
+
+          <div class="skill-group-title">Backend & Database</div>
+          <div class="skill-group-items">
+            RESTful API Integration, Node.js, Java Web (JSP/Servlet), MySQL, Postman
+          </div>
+
+          <div class="skill-group-title">Kiểm thử & Khác</div>
+          <div class="skill-group-items">
+            Selenium Java (Automation Testing), Git/GitHub, CapCut Video Editing
+          </div>
+        </section>
+
+        <!-- AWARDS & CERTIFICATIONS -->
+        <section class="sidebar-block">
+          <h2 class="section-title" id="secAwardsTitle">Giải thưởng & Chứng chỉ</h2>
+          <div style="font-size: 12px; margin-bottom: 8px;">
+            <strong style="color: var(--text-main);">Top 21 Toàn quốc</strong><br>
+            <span style="color: var(--text-muted);">Cuộc thi Thiết kế Web Sáng tạo (Web Design Innovation) 2026</span>
+          </div>
+          <div style="font-size: 12px; margin-bottom: 8px;">
+            <strong style="color: var(--text-main);">Coursera UX Design Certified</strong><br>
+            <span style="color: var(--text-muted);">Nền tảng tư duy thiết kế trải nghiệm người dùng</span>
+          </div>
+        </section>
+
+        <!-- FREELANCE & REMOTE SERVICES -->
+        <section class="sidebar-block">
+          <h2 class="section-title" id="secServicesTitle">Dịch vụ nhận Freelance</h2>
+
+          <div class="service-mini-card">
+            <div class="service-mini-title">1. Figma sang Web / Landing Page</div>
+            <div class="service-mini-desc">Chuyển bản vẽ Figma thành website Next.js/React chuẩn SEO, chuẩn mobile 100%.</div>
+          </div>
+
+          <div class="service-mini-card">
+            <div class="service-mini-title">2. Web Booking & Bán Hàng</div>
+            <div class="service-mini-desc">Làm trang đặt lịch, đặt món và shop có giỏ hàng, kết nối API.</div>
+          </div>
+
+          <div class="service-mini-card">
+            <div class="service-mini-title">3. Kiểm Thử Website (QC / Tester)</div>
+            <div class="service-mini-desc">Bắt bug giao diện, viết script tự động hóa với Selenium Java.</div>
+          </div>
+
+          <div class="service-mini-card">
+            <div class="service-mini-title">4. Video Ngắn & Daily Vlog</div>
+            <div class="service-mini-desc">Biên tập video CapCut, kinh nghiệm từ kênh TikTok @dinocuzy2004.</div>
+          </div>
+        </section>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- SCRIPT FOR BILINGUAL AND THEME TOGGLE -->
+  <script>
+    let cvLang = 'vi';
+
+    const cvData = {
+      vi: {
+        btnBack: 'Quay lại Portfolio',
+        btnLang: 'English CV',
+        btnTheme: 'Giao diện',
+        btnPrint: 'In / Tải PDF (A4)',
+        role: 'Frontend Developer · Web Development & Digital Solutions',
+        status: 'Sẵn sàng nhận dự án Freelance & Remote Jobs',
+        secSummaryTitle: 'Mục tiêu nghề nghiệp & Tóm tắt năng lực',
+        secSummaryContent: `Sinh viên năm 4 chuyên ngành <strong>Kỹ thuật Phần mềm (Software Engineering)</strong> tại <strong>Đại học FPT Đà Nẵng</strong> (GPA 3.2/4.0).
+            Từng hoàn thành kỳ <strong>thực tập Frontend Developer 3 tháng tại FPT Software (F-Soft)</strong> chuyên sâu về <strong>Next.js, ReactJS, TypeScript, Material-UI (MUI)</strong> và <strong>tích hợp RESTful API</strong>.
+            Đạt giải <strong>Top 21 Cuộc thi Thiết kế Web Sáng tạo 2026</strong>.
+            Định hướng nhận các hợp đồng Freelance, Remote Jobs và phát triển các sản phẩm web chuẩn chỉ, hiệu năng cao và đáp ứng thiết kế pixel-perfect.`,
+        secExpTitle: 'Kinh nghiệm làm việc & Thực tập',
+        fsoftRole: 'Thực tập sinh Frontend Developer (Frontend Developer Intern)',
+        fsoftBullets: `<li>Trực tiếp phát triển và tối ưu giao diện web ứng dụng <strong>Next.js, ReactJS và TypeScript</strong> theo chuẩn doanh nghiệp.</li>
+              <li>Thực hiện <strong>tích hợp RESTful API</strong>, xử lý luồng dữ liệu bất đồng bộ, render dữ liệu động và quản lý trạng thái component mượt mà.</li>
+              <li>Xây dựng và chuẩn hóa các component giao diện người dùng sử dụng thư viện <strong>Material-UI (MUI)</strong>, đảm bảo responsive 100% trên mọi thiết bị.</li>
+              <li>Phối hợp cùng đội ngũ kỹ sư phần mềm theo quy trình phát triển <strong>Agile/Scrum</strong>, quản lý mã nguồn bằng Git/GitHub.</li>`,
+        secProjectsTitle: 'Dự án thực tế nổi bật',
+        sdnBullets: `<li>Đồ án môn học <strong>SDN302 (Team 5)</strong> xây dựng nền tảng kết nối khách hàng với thợ sửa chữa dịch vụ gia đình.</li>
+              <li>Phụ trách xây dựng giao diện người dùng bằng <strong>TypeScript & React</strong>, hoàn thiện luồng tìm kiếm, đặt lịch hẹn và đánh giá đối tác.</li>
+              <li>Tích hợp API quản lý đơn dịch vụ, phân quyền đa vai trò (Khách hàng, Thợ kỹ thuật, Quản trị viên).</li>`,
+        clickEatBullets: `<li>Xây dựng ứng dụng đặt món trực tuyến theo kiến trúc <strong>MVC</strong> với giao diện người dùng ReactJS.</li>
+              <li>Thiết kế hệ thống giỏ hàng tính tiền thời gian thực, bộ lọc món theo danh mục và dashboard quản trị merchant.</li>
+              <li>Tối ưu hóa thời gian tải trang, responsive trên thiết bị di động và máy tính bảng.</li>`,
+        smartShopBullets: `<li>Đồ án Java Web xây dựng website bán hàng trực tuyến với <strong>JSP/Servlet</strong> và cơ sở dữ liệu <strong>MySQL</strong>.</li>
+              <li>Hiện thực hóa luồng mua hàng trọn vẹn: xem chi tiết sản phẩm, giỏ hàng, đặt hàng và phân quyền tài khoản quản trị.</li>`,
+        secEduTitle: 'Học vấn',
+        eduMetaText: '2022 - 2026 · Sinh viên năm 4',
+        secSkillsTitle: 'Kỹ năng chuyên môn',
+        secAwardsTitle: 'Giải thưởng & Chứng chỉ',
+        secServicesTitle: 'Dịch vụ nhận Freelance'
+      },
+      en: {
+        btnBack: 'Back to Portfolio',
+        btnLang: 'Bản tiếng Việt',
+        btnTheme: 'Toggle Theme',
+        btnPrint: 'Print / Save PDF (A4)',
+        role: 'Frontend Developer · Modern Web & Digital Engineering',
+        status: 'Available for Freelance Contracts & Remote Roles',
+        secSummaryTitle: 'Career Summary & Profile',
+        secSummaryContent: `4th-year <strong>Software Engineering</strong> student at <strong>FPT University Da Nang</strong> (GPA 3.2/4.0).
+            Completed a rigorous <strong>3-month Frontend Developer Internship at FPT Software (F-Soft)</strong> focusing on <strong>Next.js, ReactJS, TypeScript, Material-UI (MUI)</strong>, and <strong>RESTful API integration</strong>.
+            Awarded <strong>Top 21 Finalist at Web Design Innovation Competition 2026</strong>.
+            Passionate about building responsive, accessible, high-performance web applications for remote teams and freelance clients globally.`,
+        secExpTitle: 'Work & Internship Experience',
+        fsoftRole: 'Frontend Developer Intern',
+        fsoftBullets: `<li>Engineered responsive, performant web interfaces utilizing <strong>Next.js, ReactJS, and TypeScript</strong> following corporate code quality guidelines.</li>
+              <li>Performed seamless <strong>RESTful API integrations</strong>, handled asynchronous state transitions, dynamic data hydration, and complex user forms.</li>
+              <li>Standardized modular, reusable component systems powered by <strong>Material-UI (MUI)</strong> ensuring 100% cross-device compatibility.</li>
+              <li>Collaborated in an <strong>Agile/Scrum</strong> engineering environment, adhering to Git/GitHub version control best practices.</li>`,
+        secProjectsTitle: 'Featured Engineering Projects',
+        sdnBullets: `<li>Academic capstone project for <strong>SDN302 (Team 5)</strong>: an end-to-end platform connecting homeowners with certified maintenance contractors.</li>
+              <li>Built intuitive frontend user flows with <strong>TypeScript & React</strong> covering appointment booking, live status tracking, and reviews.</li>
+              <li>Integrated role-based API permissions for Customers, Service Providers, and System Administrators.</li>`,
+        clickEatBullets: `<li>Architected a food ordering and restaurant management platform following <strong>MVC principles</strong> with a ReactJS frontend.</li>
+              <li>Engineered real-time cart calculations, category-based search filtering, and an intuitive merchant management dashboard.</li>
+              <li>Optimized client-side bundle performance and ensured mobile-first UI responsiveness.</li>`,
+        smartShopBullets: `<li>E-commerce web application engineered with <strong>Java Web (JSP/Servlet)</strong> and <strong>MySQL</strong> relational database.</li>
+              <li>Implemented end-to-end purchasing workflows: product catalog filtering, cart persistence, checkout, and admin order fulfillment.</li>`,
+        secEduTitle: 'Education',
+        eduMetaText: '2022 - 2026 · 4th-Year Student',
+        secSkillsTitle: 'Technical Skills',
+        secAwardsTitle: 'Awards & Honors',
+        secServicesTitle: 'Freelance & Contract Services'
+      }
+    };
+
+    function toggleLanguage() {
+      cvLang = cvLang === 'vi' ? 'en' : 'vi';
+      const d = cvData[cvLang];
+
+      document.getElementById('btnBackText').textContent = d.btnBack;
+      document.getElementById('btnLangText').textContent = d.btnLang;
+      document.getElementById('btnThemeText').textContent = d.btnTheme;
+      document.getElementById('btnPrintText').textContent = d.btnPrint;
+
+      document.getElementById('cvRole').textContent = d.role;
+      document.getElementById('cvStatus').textContent = d.status;
+      document.getElementById('secSummaryTitle').textContent = d.secSummaryTitle;
+      document.getElementById('secSummaryContent').innerHTML = d.secSummaryContent;
+
+      document.getElementById('secExpTitle').textContent = d.secExpTitle;
+      document.getElementById('fsoftRole').textContent = d.fsoftRole;
+      document.getElementById('fsoftBullets').innerHTML = d.fsoftBullets;
+
+      document.getElementById('secProjectsTitle').textContent = d.secProjectsTitle;
+      document.getElementById('sdnBullets').innerHTML = d.sdnBullets;
+      document.getElementById('clickEatBullets').innerHTML = d.clickEatBullets;
+      document.getElementById('smartShopBullets').innerHTML = d.smartShopBullets;
+
+      document.getElementById('secEduTitle').textContent = d.secEduTitle;
+      document.getElementById('eduMetaText').textContent = d.eduMetaText;
+      document.getElementById('secSkillsTitle').textContent = d.secSkillsTitle;
+      document.getElementById('secAwardsTitle').textContent = d.secAwardsTitle;
+      document.getElementById('secServicesTitle').textContent = d.secServicesTitle;
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+  </script>
+
+</body>
+
+</html>
